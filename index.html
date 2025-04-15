@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Poverty - Welfare Schemes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .scheme-card {
+            transition: transform 0.3s;
+            margin-bottom: 30px; /* Increased gap between schemes */
+            height: 100%;
+        }
+        .carousel-item {
+            height: 300px;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .carousel-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .bookmark-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #6c757d;
+            z-index: 2;
+        }
+        .bookmark-icon.active {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Uplift Connect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schemes">Schemes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">Resources</a>
+                    </li>
+                </ul>
+                <div>
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="hero-section">
+        <video autoplay muted loop class="hero-video">
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1 class="display-4 fw-bold">End Poverty in All Its Forms</h1>
+            <p class="lead">Discover government and NGO welfare schemes to help you and your family</p>
+            <a href="#schemes" class="btn btn-primary btn-lg mt-3">Browse Schemes</a>
+        </div>
+    </section>
+
+    <!-- Trending Schemes Carousel with Images -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-4">Trending Schemes</h2>
+      
+        <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+          <div class="carousel-inner">
+      
+            <div class="carousel-item active" style="background-image: url('food.png');  height: 300px;">
+              <div class="d-flex h-100 align-items-center justify-content-center text-center text-white ">
+                <div>
+                  <h3>National Food Security Scheme</h3>
+                  <p>Provides subsidized food grains to eligible households through the Public Distribution System.</p>
+                  <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="carousel-item" style="background-image: url('farmer.png');height: 300px;">
+              <div class="d-flex h-100 align-items-center justify-content-center text-center text-white ">
+                <div>
+                  <h3>PM Kisan Samman Nidhi</h3>
+                  <p>Financial support of ₹6,000 per year to small and marginal farmer families.</p>
+                  <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="carousel-item" style="background-image: url('old.png');  height: 300px;">
+              <div class="d-flex h-100 align-items-center justify-content-center text-center text-white ">
+                <div>
+                  <h3>National Social Assistance Programme</h3>
+                  <p>Provides pension to the elderly, widows and persons with disabilities in BPL families.</p>
+                  <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </section>
+      
+
+    <!-- Schemes Section -->
+    <section id="schemes" class="container mb-5">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h2>Browse Welfare Schemes</h2>
+            </div>
+            
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <select id="categoryFilter" class="form-select" onchange="filterSchemes()">
+                    <option value="">All Categories</option>
+                    <option value="education">Education</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="employment">Employment</option>
+                    <option value="housing">Housing</option>
+                    <option value="food">Food Security</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select id="stateFilter" class="form-select" onchange="filterSchemes()">
+                    <option value="">All States</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="up">Uttar Pradesh</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="west-bengal">West Bengal</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search schemes...">
+                    <button class="btn btn-primary" onclick="searchSchemes()">Search</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" id="schemesContainer">
+            <!-- Scheme cards will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="container mb-5">
+        <h2 class="text-center mb-4">Awareness Resources</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Understanding Poverty in India</h5>
+                        <p class="card-text">Learn about the different dimensions of poverty and how government schemes aim to address them.</p>
+                        <a href="understanding-poverty.html" class="btn btn-outline-primary">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">How to Apply for Welfare Schemes</h5>
+                        <p class="card-text">Step-by-step guide to applying for various government welfare programs.</p>
+                        <a href="apply-guide.html" class="btn btn-outline-primary">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">FAQs About Poverty Alleviation</h5>
+                        <p class="card-text">Common questions answered about eligibility, documentation, and benefits.</p>
+                        <a href="faqs.html" class="btn btn-outline-primary">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Uplift Connect Welfare Schemes</h5>
+                    <p>Helping citizens access government and NGO welfare programs to alleviate poverty.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#schemes" class="text-white">Schemes</a></li>
+                        <li><a href="#resources" class="text-white">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <p>Email: info@nopoverty.org<br>Phone: +91 9699 471471</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">© 2023 No Poverty Initiative. Part of Sustainable Development Goals.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="signupName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="signupConfirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard Modal (hidden by default) -->
+    <div class="modal fade" id="dashboardModal" tabindex="-1" aria-labelledby="dashboardModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dashboardModalLabel">My Dashboard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        Welcome back, Maaheer Furia! Here are your saved schemes and recent activity.
+                    </div>
+                    
+                    <h5>Recently Bookmarked Schemes</h5>
+                    <div class="row" id="bookmarkedSchemes">
+                        <!-- Bookmarked schemes will appear here -->
+                    </div>
+                    
+                    <h5 class="mt-4">Recent Activity</h5>
+                    <ul class="list-group" id="recentActivity">
+                        <li class="list-group-item">You recently bookmarked "National Food Security Scheme"</li>
+                        <li class="list-group-item">You viewed "PM Kisan Samman Nidhi" 2 days ago</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
